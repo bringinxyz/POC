@@ -58,7 +58,7 @@ export const checkMetamaskStatus = (
 ) => {
   const accountChanged = (accounts) => {
     // when account changed
-    setCurrentAccount(accounts[0]);
+    setCurrentAccount(accounts[0] ? accounts[0] : "");
     console.log(accounts[0], "account changed");
     if (!accounts.length) {
       setMetamaskConnected(false);
