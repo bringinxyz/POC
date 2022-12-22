@@ -5,6 +5,7 @@ import {
   METAMASK_CONNECT_FUNCTION,
   METAMASK_STATUS,
   NETWORK_ID,
+  USDT_CONTRACT_INSTANCE,
 } from "./types";
 
 export const changeMetamaskStatus = (payload) => ({
@@ -25,3 +26,7 @@ export const changeMetamaskConnectFunction = (payload) => ({
 });
 export const changeNetworkId = (payload) => ({ type: NETWORK_ID, payload });
 export const changeLoad = (payload) => ({ type: LOAD, payload });
+export const changeUsdtContractInstance = (payload) => ({
+  type: USDT_CONTRACT_INSTANCE,
+  payload,
+});

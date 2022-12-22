@@ -16,17 +16,4 @@ contract Bringin {
         token.transferFrom(_from, address(this), _amount);
         emit PulledFunds(_from, _amount);
     }
-
-    function approveUser(address _spender, uint _amount) public {
-        token.approve(_spender, _amount);
-    }
-
-    function increaseUserAllowance(address _spender, uint addedValue) public {
-        address cur = msg.sender;
-        this.approveUser(_spender, token.allowance(cur, _spender) + addedValue);
-    }
-
-    function getTokenBalance() public view returns (uint) {
-        return token.balanceOf(address(this));
-    }
 }

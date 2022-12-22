@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.btn-primary {
+  font-size: 1.1rem;
+  padding: 0.2rem 0.5rem;
+}
+.main {
+  font-size: 1.3rem;
+  width: 80%;
+  margin: 5rem auto;
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  &__btn-container {
+    input {
+      font-size: 1.2rem;
+      padding: 0.2rem 0.5rem;
+      width: 25rem;
+    }
+    margin-top: 5rem;
+    text-align: center;
+  }
+  &__buy-container {
+    text-align: center;
+    margin-top: 5rem;
+    &--token-predict {
+      margin-top: 2rem;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}
+.account {
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  &__upper {
+    &--item {
+      display: flex;
+      align-items: center;
+      &__key {
+        font-weight: bold;
+      }
+      &__value {
+        margin-left: 1.2rem;
+      }
+    }
+  }
+  &__lower {
+    margin-top: 1.3rem;
+  }
+}
+.contract {
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  &__title {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    &--key {
+      font-weight: bold;
+    }
+    &--value {
+      margin-left: 1.2rem;
+    }
+  }
+}
+.buy__input {
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+  width: 25rem;
+}

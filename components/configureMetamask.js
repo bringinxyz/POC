@@ -1,16 +1,20 @@
 import { ethers } from "ethers";
 // enter the contract address in the .env.local as 'NEXT_PUBLIC_CONTRACT_ADDRESS'
 // in the root directory
-export const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
+export const bringinContractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
+export const usdtContractAddress =
+  process.env.NEXT_PUBLIC_USDT_CONTRACT_ADDRESS;
 //import artifacts of the contract as 'Artifacts' here !!
-const Artifacts = "";
-// import Artifacts from "../artifacts/contracts/Greeter.sol/Greeter.json";
+// const Artifacts = "";
+import BringinArtifact from "../artifacts/contracts/Bringin.sol/Bringin.json";
+import UsdtArtifact from "../artifacts/contracts/USDTbringin.sol/USDTbringin.json";
 
 export const firstFunc = async (
   setContract,
   setCurrentAccount,
   setCurrentNetworkId,
-  setMetamaskConnected
+  setMetamaskConnected,
+  setUsdtContract
 ) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const _signer = await provider.getSigner();
@@ -23,11 +27,25 @@ export const firstFunc = async (
   } else {
     setMetamaskConnected(false);
   }
-  const contract = await initialiseContract(_signer);
+  const contract = await initialiseContract(
+    bringinContractAddress,
+    _signer,
+    BringinArtifact
+  );
   setContract(contract);
+  const usdtContract = await initialiseContract(
+    usdtContractAddress,
+    _signer,
+    UsdtArtifact
+  );
+  setUsdtContract(usdtContract);
 };
 
-export const initialiseContract = async (_signer) => {
+export const initialiseContract = async (
+  contractAddress,
+  _signer,
+  Artifacts
+) => {
   if (!contractAddress) return;
   const _contract = new ethers.Contract(
     contractAddress,

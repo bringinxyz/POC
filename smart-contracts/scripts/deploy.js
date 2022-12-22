@@ -3,14 +3,19 @@ const hre = require("hardhat");
 const main = async () => {
   const { ethers } = hre;
 
-  const USDTAddressGoerli = "0x509Ee0d083DdF8AC028f2a56731412edD63223B9";
+  const USDTbContract = await ethers.getContractFactory("USDTbringin");
+  const usdtBContract = await USDTbContract.deploy();
+
+  await usdtBContract.deployed();
 
   const Contract = await ethers.getContractFactory("Bringin");
-  const contract = await Contract.deploy(USDTAddressGoerli);
+  const contract = await Contract.deploy(usdtBContract.address);
 
   await contract.deployed();
 
-  console.log(`Contract address: ${contract.address}`);
+  console.log(
+    `Contract address: ${contract.address}, USDTb contract: ${usdtBContract.address}`
+  );
 };
 
 main()

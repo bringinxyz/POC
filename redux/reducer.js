@@ -6,6 +6,7 @@ import {
   METAMASK_CONNECT_FUNCTION,
   METAMASK_STATUS,
   NETWORK_ID,
+  USDT_CONTRACT_INSTANCE,
 } from "./types";
 
 const metamaskStatus = (state = false, action) => {
@@ -32,6 +33,10 @@ const load = (state = false, action) => {
   if (action.type === LOAD) return action.payload;
   return state;
 };
+const usdtContractInstance = (state = {}, action) => {
+  if (action.type === USDT_CONTRACT_INSTANCE) return action.payload;
+  return state;
+};
 
 export default combineReducers({
   metamaskConnectFunction,
@@ -40,4 +45,5 @@ export default combineReducers({
   metamaskStatus,
   networkId,
   load,
+  usdtContractInstance,
 });

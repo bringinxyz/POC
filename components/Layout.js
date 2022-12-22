@@ -15,7 +15,9 @@ import {
   changeMetamaskConnectFunction,
   changeMetamaskStatus,
   changeNetworkId,
+  changeUsdtContractInstance,
 } from "../redux/action";
+import Main from "./Main";
 
 const Layout = ({
   children,
@@ -26,6 +28,7 @@ const Layout = ({
   changeNetworkId,
   changeMetamaskStatus,
   state,
+  changeUsdtContractInstance,
 }) => {
   const {
     contractInstance,
@@ -42,7 +45,8 @@ const Layout = ({
       changeContractInstance,
       changeCurrentAccount,
       changeNetworkId,
-      changeMetamaskStatus
+      changeMetamaskStatus,
+      changeUsdtContractInstance
     );
     checkMetamaskStatus(
       changeMetamaskStatus,
@@ -62,7 +66,6 @@ const Layout = ({
 
   return (
     <>
-      <h1>Hello, Blockchain !!</h1>
       {!metamaskStatus ? (
         <button onClick={() => metamaskConnectFunction(changeMetamaskStatus)}>
           Connect Metamask
@@ -70,9 +73,7 @@ const Layout = ({
       ) : (
         <>
           {children}
-          <h3>Contract address: {contractAddress}</h3>
-          <h4>Current account: {currentAccount}</h4>
-          <h4>Current chain-id: {networkId}</h4>
+          <Main />
         </>
       )}
     </>
@@ -87,4 +88,5 @@ export default connect(mapStateToState, {
   changeLoad,
   changeNetworkId,
   changeMetamaskStatus,
+  changeUsdtContractInstance,
 })(Layout);
